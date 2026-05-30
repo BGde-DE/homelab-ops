@@ -8,6 +8,7 @@ Alle Namen/Netze/Hosts sind Platzhalter. Keine realen Ports, Domains oder Provid
 - **Least privilege**: Freigaben sind ziel- und portbezogen (nur was nötig ist).
 - **Administration nur aus MGMT/AP_MGMT** (nicht aus Clients/IoT/Gast, nicht via VPN).
 - **WAN → interne Systeme** nur über definierte Entry Points (Reverse Proxy für Web; einzelne Ausnahmen wie Voice/Game/Remote nur gezielt).
+- **Baseline-Services** (DNS/NTP/Updates) werden je Segment gezielt erlaubt; alles darüber hinaus ist begründet.
 
 ---
 
@@ -108,10 +109,10 @@ Es existieren bewusst öffentlich erreichbare Dienste. Veröffentlichung erfolgt
 - **Allow**: `HAProxy → Backends` nur auf benötigte Ziele/Ports
 - **Deny**: unnötige Ost-West-Kommunikation (segmentiert nach Servicebedarf)
 
-### 4.6 MGMT und AP_MGMT
-- **Allow**: `MGMT → Infrastruktur` (Firewall, Hypervisor, Storage, APs, Server-Management)
-- **Allow**: `AP_MGMT → notwendige Targets` (z. B. Updates/Logging/Management-Services)
-- **Deny**: Zugriff auf MGMT aus anderen Segmenten (one-way Administration)
+### 4.6 MGMT und AP_MGMT (Adminsegmente)
+- **Allow**: MGMT → Infrastruktur (Firewall, Hypervisor, Storage, APs, Server-Management)
+- **Allow**: AP_MGMT → notwendige Targets (z. B. Updates/Logging/Management-Services)
+- **Deny**: Zugriff auf MGMT/AP_MGMT aus anderen Segmenten (one-way Administration)
 
 ---
 
@@ -133,3 +134,6 @@ Es existieren bewusst öffentlich erreichbare Dienste. Veröffentlichung erfolgt
 ## 7) Änderungen / Review
 - Regeländerungen erfolgen nachvollziehbar (kurze Notiz: Datum, Grund, Risiko, Rollback).
 - Regelmäßiger Review: “Welche Ausnahme kann wieder entfernt werden?”
+
+## Anhang
+- Konkrete Ports, Objekt-/Aliasnamen, Provider-Interfaces und Regel-Exports werden aus Sicherheitsgründen nicht veröffentlicht.
