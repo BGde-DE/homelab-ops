@@ -1,0 +1,6 @@
+# Internal-only TLS (local DNS override). Not intended for public Internet exposure.
+
+paperless.example.internal {
+  tls internal
+  reverse_proxy paperless:8000
+}
