@@ -48,3 +48,4 @@ startup: order=10,up=90 #Startreihenfolge/Delay (z.B. damit abhängige Storage-M
 mp0: /path/to/storage/moodledata,mp=/srv/moodledata,size=0T
 
 net0: name=eth0,bridge=vmbrX,firewall=1,gw=10.50.50.1,hwaddr=XX:XX:XX:XX:XX:XX,ip=10.50.50.10/24,type=veth
+```
