@@ -8,7 +8,7 @@ Moodle wurde ehrenamtlich zu Beginn der COVID-19-Pandemie als schnelle Lösung a
 ## Architektur (High Level)
 - **Hypervisor:** Proxmox VE
 - **Workload:** Debian LXC (unprivileged)
-- **App-Stack (Prinzip):** Web/PHP + DB (ohne produktive Details), optional Reverse Proxy davor
+- **App-Stack:** Web/PHP + Datenbank im selben LXC (einfacher Betrieb, klarer Restore-Pfad)
 - **Storage:**
   - Rootfs auf lokalem Storage (Performance/Resilience)
   - Separates Mount für **moodledata** / Uploads auf externem Storage (NAS/Storage)
@@ -23,7 +23,7 @@ Moodle wurde ehrenamtlich zu Beginn der COVID-19-Pandemie als schnelle Lösung a
 ## Backup / Restore (Prinzip)
 - Backup umfasst:
   - Moodle Code / Webroot (falls nicht per Paket/Repo reproduzierbar)
-  - **DB-Dump** (Moodle DB)
+  - **DB-Dump** (Datenbank im selben LXC)
   - **moodledata** (separates Storage)
 - Restore-Tests in isolierter Umgebung: Kerncheck ist „DB + moodledata konsistent“ + Login/Grundfunktion ok
 
