@@ -39,8 +39,8 @@ Die Regeln sind “top-down” aufgebaut (first match, quick):
 ## 3) WAN Inbound (Perimeter)
 
 ### 3.1 Notfall / Anti-Lockout (optional)
-- **Allow**: sehr restriktiver Admin-/Notfallzugang zur Firewall (nur von *Trusted Admin Sources*).
-- **Hinweis:** Ausgeschaltet!
+- (Optional) sehr restriktiver Admin-/Notfallzugang zur Firewall (nur von *Trusted Admin Sources*).
+- **Status:** deaktiviert (keine WAN-Adminzugänge; Administration nur aus MGMT/AP_MGMT lokal).
 
 ### 3.2 Block: Threat-Intel / Known Bad (immer früh)
 - **Block** inbound, Quelle ∈ `TI_KnownBad_*` (Aggregationen, Botnet/C2, Reputation)
