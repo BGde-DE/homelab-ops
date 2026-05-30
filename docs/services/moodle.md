@@ -3,19 +3,21 @@
 ## Kontext
 Ich betreibe Moodle selbst als Service in einer Proxmox-Umgebung.
 
-Moodle wurde ehrenamtlich zu Beginn der COVID-19-Pandemie als schnelle Lösung aufgebaut und wird seitdem im Produktivbetrieb genutzt (realer Nutzerbetrieb, Updates, Backups und Restore-Checks).
+Moodle wurde ehrenamtlich zu Beginn der COVID-19-Pandemie als schnelle Lösung aufgebaut und wird seitdem produktiv genutzt (reale Nutzer, Updates, Backups und Restore-Checks).
 
 ## Architektur (High Level)
 - **Hypervisor:** Proxmox VE
 - **Workload:** Debian LXC (unprivileged)
+- **App-Stack (Prinzip):** Web/PHP + DB (ohne produktive Details), optional Reverse Proxy davor
 - **Storage:**
   - Rootfs auf lokalem Storage (Performance/Resilience)
   - Separates Mount für **moodledata** / Uploads auf externem Storage (NAS/Storage)
-- **Netz:** eigenes internes Segment (Firewall aktiv), Zugriff nur aus definierten Netzen/VPN
+- **Netz:** eigenes internes Segment (Firewall aktiv), Zugriff nur aus definierten Netzen/VPN (kein direktes WAN-Exposure)
 
 ## Betrieb / Wartung
 - Regelmäßige Updates (OS + Moodle)
 - Wartungsfenster + kurzer Rollback-Plan (Snapshot/Backup vor Upgrade)
+- Smoke-Checks nach Updates (Login, Kernfunktionen, Logs)
 - Monitoring über Basis-Metriken (CPU/RAM/Disk), Logprüfung (Web/PHP)
 
 ## Backup / Restore (Prinzip)
@@ -23,7 +25,7 @@ Moodle wurde ehrenamtlich zu Beginn der COVID-19-Pandemie als schnelle Lösung a
   - Moodle Code / Webroot (falls nicht per Paket/Repo reproduzierbar)
   - **DB-Dump** (Moodle DB)
   - **moodledata** (separates Storage)
-- Restore-Tests in isolierter Umgebung: “DB + moodledata konsistent” ist der Kerncheck
+- Restore-Tests in isolierter Umgebung: Kerncheck ist „DB + moodledata konsistent“ + Login/Grundfunktion ok
 
 ## Security / Hardening (Prinzip)
 - Segmentierung: Service ist nicht “frei im LAN”
