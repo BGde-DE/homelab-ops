@@ -1,30 +1,34 @@
 # Ops-Portfolio (Sysadmin · Netzwerk · Support)
 
-Dieses Repository ist ein anonymisiertes Portfolio aus meinem Homelab-/Betriebsalltag.
-Fokus: stabile Services, Netzwerksegmentierung, Backup/Restore, Troubleshooting.
+Anonymisiertes Operations-Portfolio (homelab-/betriebsnah): Planung, Betrieb und Troubleshooting von Infrastruktur/Services mit Fokus auf **Security/Segmentierung**, **stabile Deployments**, **Backup/Restore (DR)** und **Runbooks**.
 
-## Stack (Auszug)
-- Proxmox VE, Proxmox Backup Server
-- OPNsense (Firewall, VLANs, Unbound DNS, HAProxy)
-- Docker (Compose)
-- TrueNAS SCALE (Storage/Backup-Stufen)
-- OpenWRT (mehrere APs)
-- Home Assistant + KNX
-- Betrieb von Web-/Collab-/Utility-Services sowie ein paar Ports für Gameserver (privat/familiär)
-
-## Was absichtlich NICHT enthalten ist
-- keine realen IPs/Subnetze, Domains, Hostnamen
-- keine Portlisten / Rule-Exports
-- keine Keys, Tokens, Config-Backups oder Screenshots mit sensiblen Daten
-
-## Inhalte
-- docs/02_netzwerk_security.md – Segmentierung/Policy (high level)
-- docs/03_services_reverse_proxy.md – Reverse Proxy Pattern (ohne echte vHosts)
-- docs/04_backup_restore_dr.md – Backup-Kette + Restore-Checks
-- docs/06_runbooks.md – Support-Runbooks & Troubleshooting
+## Highlights (Recruiter-Quickscan)
+- Netzwerksegmentierung (VLAN/Policy) + Firewall-Konzept
+- Reverse-Proxy-Pattern für interne Services (ohne öffentliche Exposure)
+- Backup-Kette inkl. Restore-Checks (DR-Denke)
+- Runbooks für wiederholbare Fehleranalyse / Support-Fälle
+- Beispiel-Service: Moodle (Self-hosted auf Proxmox LXC)
 
 ## Quick links (Start here)
-- Architektur / Übersicht: docs/10_systemuebersicht.md
-- Netzwerk & Security (Segmentierung/Policy): docs/02_netzwerk_security.md
-- Backup/Restore/DR: docs/04_backup_restore_dr.md
-- Service-Beispiel: docs/services/moodle.md
+- **Systemübersicht / Architektur:** `docs/10_systemuebersicht.md`
+- **Netzwerk & Security (Segmentierung/Policy):** `docs/02_netzwerk_security.md`
+- **Backup/Restore/DR (Restore-Checks):** `docs/04_backup_restore_dr.md`
+- **Runbooks / Troubleshooting:** `docs/06_runbooks.md`
+- **Service-Beispiel (Moodle, Proxmox LXC):** `docs/services/moodle.md`
+
+## Stack (Auszug)
+- Proxmox VE · Proxmox Backup Server
+- OPNsense (Firewall, VLANs, Unbound DNS, HAProxy)
+- Docker (Compose)
+- TrueNAS SCALE (Storage / Backup-Stufen)
+- OpenWRT (APs)
+- Home Assistant + KNX
+
+## Scope / Kontext
+- Betrieb interner Web-/Collab-/Utility-Services (privat/familiär)
+- Dokumentation ist absichtlich „high level“ und ohne Identifikatoren
+
+## Was absichtlich NICHT enthalten ist
+- keine realen IPs/Subnetze, Domains oder Hostnamen
+- keine Portlisten / Rule-Exports
+- keine Keys/Tokens, vollständigen Config-Backups oder Screenshots mit sensiblen Daten
