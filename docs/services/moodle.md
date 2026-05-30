@@ -3,6 +3,8 @@
 ## Kontext
 Ich betreibe Moodle selbst als Service in einer Proxmox-Umgebung.
 
+**Praxisbezug:** Moodle wurde ehrenamtlich zu Beginn der COVID-19-Pandemie als schnelle Lösung aufgebaut und wird seitdem stabil betrieben (realer Nutzerbetrieb, Updates + Backups + Restore-Checks).
+
 ## Architektur (High Level)
 - **Hypervisor:** Proxmox VE
 - **Workload:** Debian LXC (unprivileged), `nesting=1`
