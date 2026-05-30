@@ -1,0 +1,145 @@
+version: "3.4"
+
+services:
+  broker:
+    image: redis:7
+    container_name: Paperless-Redis
+    restart: unless-stopped
+    volumes:
+      - redisdata:/data
+
+  db:
+    image: postgres:16
+    container_name: Paperless-DB
+    restart: unless-stopped
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: paperless
+      POSTGRES_USER: paperless
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  samba:
+    image: dperson/samba
+    container_name: Paperless-SMB
+    environment:
+      TZ: "Europe/Berlin"
+      USERID: 1000
+      GROUPID: 100
+      SMB: "true"
+    # LAN-only Hinweis: Diese Ports sind nur im internen Netz erreichbar.
+    # Optional besser: an LAN-IP binden statt 0.0.0.0 (siehe templates/paperless/README.md).
+    ports:
+      - "137:137/udp"
+      - "138:138/udp"
+      - "139:139/tcp"
+      - "445:445/tcp"
+    restart: unless-stopped
+    volumes:
+      - samba:/var/lib/samba
+      - samba-etc:/etc
+      - samba-log:/var/log/samba
+      - samba-run:/run/samba
+      - samba-cache:/var/cache/samba
+      - samba-consume:/usr/src/paperless/consume:rw
+    command: >
+      -s "paperless-in;/usr/src/paperless/consume;yes;no;no;scaninput"
+      -u "scaninput;${SMB_PASSWORD}"
+      -p
+
+  webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: Paperless-NGX
+    restart: unless-stopped
+    depends_on:
+      - db
+      - broker
+      - gotenberg
+      - tika
+      - caddy
+      - samba
+    # Zugriff nur intern vorgesehen; Port-Mapping ist optional.
+    ports:
+      - "8010:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "-S", "--max-time", "2", "http://localhost:8000"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - data:/usr/src/paperless/data
+      - media:/usr/src/paperless/media
+      - export:/usr/src/paperless/export:rw
+      - samba-consume:/usr/src/paperless/consume:rw
+    environment:
+      PAPERLESS_REDIS: redis://broker:6379
+      PAPERLESS_DBHOST: db
+      USERMAP_UID: 1000
+      USERMAP_GID: 100
+      PAPERLESS_OCR_LANGUAGES: "eng fra deu"
+      PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}
+      PAPERLESS_TIME_ZONE: "Europe/Berlin"
+      PAPERLESS_ENABLE_COMPRESSION: "1"
+
+      PAPERLESS_TASK_WORKERS: "2"
+      PAPERLESS_THREADS_PER_WORKER: "2"
+
+      PAPERLESS_CONSUMER_ENABLE_BARCODES: "true"
+      PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE: "true"
+      PAPERLESS_CONSUMER_ASN_BARCODE_PREFIX: "ASN"
+      PAPERLESS_CONSUMER_BARCODE_TIFF_SUPPORT: "true"
+
+      PAPERLESS_OCR_USER_ARGS: >
+        {"invalidate_digital_signatures": true, "continue_on_soft_render_error": true}
+
+      PAPERLESS_FILENAME_FORMAT: "{{created_year}}/{{correspondent}}/{{created_day}}-{{created_month}}-{{created_year}} {{title}}"
+
+      # Interne URL nur als Beispiel/Platzhalter
+      PAPERLESS_URL: https://paperless.example.internal:9000
+      PAPERLESS_ALLOWED_HOSTS: "paperless.example.internal,localhost"
+
+      PAPERLESS_TIKA_ENABLED: "1"
+      PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://gotenberg:3000
+      PAPERLESS_TIKA_ENDPOINT: http://tika:9998
+
+      # Optional / versionsabhängig:
+      # PAPERLESS_ENABLE_AI: "true"
+
+  gotenberg:
+    image: gotenberg/gotenberg:7.8
+    container_name: Paperless-gotenberg
+    restart: unless-stopped
+    command:
+      - "gotenberg"
+      - "--chromium-disable-javascript=true"
+      - "--chromium-allow-list=file:///tmp/.*"
+
+  tika:
+    image: apache/tika:latest
+    container_name: Paperless-tika
+    restart: unless-stopped
+
+  caddy:
+    image: caddy
+    container_name: Paperless-caddy
+    restart: unless-stopped
+    volumes:
+      - caddy_data:/data
+      - caddyfile:/etc/caddy
+    ports:
+      - "9000:443"
+
+volumes:
+  samba:
+  samba-consume:
+  samba-etc:
+  samba-log:
+  samba-run:
+  samba-cache:
+  data:
+  media:
+  export:
+  pgdata:
+  redisdata:
+  caddy_data:
+  caddyfile:
