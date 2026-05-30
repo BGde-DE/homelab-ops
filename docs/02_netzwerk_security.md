@@ -20,8 +20,7 @@ Typische Segmente:
 
 ## DNS (Unbound)
 - Zentraler DNS Resolver (Unbound) pro Segment nutzbar.
-- Optional: DNS-Filter/Blocklisten; Policies je Segment (z. B. Gäste freier).
-
+- Optional: DNS-Filter/Blocklisten je Segment; im GUEST-Netz ggf. weniger aggressiv, um Kompatibilität zu erhöhen (ohne Auswirkungen auf die Inter-VLAN-Policy).
 ## VPN
 - WireGuard wird für Remote Access zu ausgewählten internen Services nutzbar.
 - **Adminzugänge (WebUIs/SSH/Management)** sind **ausschließlich aus dem MGMT/AP‑MGMT Segment** erlaubt.
