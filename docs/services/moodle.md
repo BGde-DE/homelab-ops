@@ -36,7 +36,6 @@ Moodle wurde ehrenamtlich zu Beginn der COVID-19-Pandemie als schnelle Lösung a
 
 ```ini
 arch: amd64
-features: nesting=1 #optional (z.B. falls im CT weitere Container/Namespace-Features benötigt werden)
 hostname: moodle
 memory: 8192
 onboot: 1
