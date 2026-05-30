@@ -22,3 +22,9 @@ Fokus: stabile Services, Netzwerksegmentierung, Backup/Restore, Troubleshooting.
 - docs/03_services_reverse_proxy.md – Reverse Proxy Pattern (ohne echte vHosts)
 - docs/04_backup_restore_dr.md – Backup-Kette + Restore-Checks
 - docs/06_runbooks.md – Support-Runbooks & Troubleshooting
+
+## Quick links (Start here)
+- Architektur / Übersicht: docs/10_systemuebersicht.md
+- Netzwerk & Security (Segmentierung/Policy): docs/02_netzwerk_security.md
+- Backup/Restore/DR: docs/04_backup_restore_dr.md
+- Service-Beispiel: docs/services/moodle.md
