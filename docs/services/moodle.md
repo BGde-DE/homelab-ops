@@ -7,7 +7,7 @@ Moodle wurde ehrenamtlich zu Beginn der COVID-19-Pandemie als schnelle Lösung a
 
 ## Architektur (High Level)
 - **Hypervisor:** Proxmox VE
-- **Workload:** Debian LXC (unprivileged), `nesting=1`
+- **Workload:** Debian LXC (unprivileged)
 - **Storage:**
   - Rootfs auf lokalem Storage (Performance/Resilience)
   - Separates Mount für **moodledata** / Uploads auf externem Storage (NAS/Storage)
