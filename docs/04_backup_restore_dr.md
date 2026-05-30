@@ -1,21 +1,22 @@
 # Backup / Restore / DR (High Level)
 
-## Ziel
-- Mehrstufige Backups inkl. Offsite-Kopie
-- Restore-Fähigkeit ist nachweisbar (Restore-Checks)
+## Ziele (RPO/RTO, grob)
+- Ziel: Ausfälle ohne Datenverlust-Katastrophe überstehen
+- **RPO (typisch):** 24h (kritische Daten ggf. kürzer)
+- **RTO (typisch):** 2–4h für Kernservices, 24h für „nice to have“
 
-## Backup-Kette (abstrahiert)
-- Proxmox VE → Proxmox Backup Server (lokal)
-- zusätzliche Backup-Stufe → NAS (lokal)
-- NAS → NAS (zweite lokale Stufe)
-- Offsite-Kopie über VPN (WireGuard) zu externem Ziel
+## Scope (abstrahiert)
+- **Tier 1:** Identity/DNS/Reverse Proxy/Backup-Infrastruktur (Basis)
+- **Tier 2:** Produktiv genutzte Services (Collab/Utility)
+- **Tier 3:** Komfort/Games/Experimente
 
-## Restore-Checks (Beispiel)
-- monatlich: Restore-Test einer kleinen VM/LXC in isoliertem Testnetz
-- quartalsweise: Restore eines größeren Services (inkl. abhängiger Daten)
+## Was wird gesichert (Prinzip)
+- Image-/Snapshot-Backups für VMs/LXC (schneller Restore)
+- Zusätzlich app-nahe Daten (z. B. DB-Dumps + Dateien), wo sinnvoll
 
-Checkliste:
-1. Restore in isoliertem Netz
-2. Service-Health prüfen (WebUI/Ports/Logs)
-3. Dauer + Probleme dokumentieren
-4. Testsystem entfernen
+## Restore-Check: Definition „bestanden“
+- Service startet im isolierten Testnetz
+- Login/Grundfunktion ok (z. B. UI erreichbar + Auth funktioniert)
+- Daten vorhanden (stichprobenartig)
+- Logs ohne wiederkehrende Fatal Errors
+- Dauer/Probleme dokumentiert (Runbook/Notizen)
