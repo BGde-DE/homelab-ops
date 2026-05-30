@@ -26,7 +26,7 @@ Alle Namen/Netze/Hosts sind Platzhalter. Keine realen Ports, Domains oder Provid
 ---
 
 ## 2) Regelreihenfolge (High Level)
-Die Regeln sind “top-down” aufgebaut (first match, quick):
+Die Regeln sind "top-down" aufgebaut (first match, quick):
 
 1. **Anti-Lockout / Notfallzugang** (falls vorhanden, sehr restriktiv)
 2. **WAN: Block Known-Bad** (Threat-Intel / Reputation / dynamische Decisions)
@@ -71,9 +71,9 @@ Es existieren bewusst öffentlich erreichbare Dienste. Veröffentlichung erfolgt
 - **Allow**: einzelne Service-Kategorien (z. B. Voice / Game / Remote-Support)
   - typischerweise zusätzlich eingeschränkt über `Geo_Trusted` oder “min trusted”
 - **Beispiel (anonym):**
-  - “einige UDP-Ports für Gameserver (privat/familiär)”
-  - “ein Voice-Service”
-  - “ein Remote-Support Dienst”
+  - "einige UDP-Ports für Gameserver (privat/familiär)"
+  - "ein Voice-Service"
+  - "ein Remote-Support Dienst"
 
 **Wichtig:** In dieser Doku werden keine Portlisten veröffentlicht.
 
@@ -133,7 +133,7 @@ Es existieren bewusst öffentlich erreichbare Dienste. Veröffentlichung erfolgt
 
 ## 7) Änderungen / Review
 - Regeländerungen erfolgen nachvollziehbar (kurze Notiz: Datum, Grund, Risiko, Rollback).
-- Regelmäßiger Review: “Welche Ausnahme kann wieder entfernt werden?”
+- Regelmäßiger Review: "Welche Ausnahme kann wieder entfernt werden?"
 
 ## Anhang
 - Konkrete Ports, Objekt-/Aliasnamen, Provider-Interfaces und Regel-Exports werden aus Sicherheitsgründen nicht veröffentlicht.
