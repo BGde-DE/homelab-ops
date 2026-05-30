@@ -25,14 +25,14 @@ Moodle wurde ehrenamtlich zu Beginn der COVID-19-Pandemie als schnelle Lösung a
   - Moodle Code / Webroot (falls nicht per Paket/Repo reproduzierbar)
   - **DB-Dump** (Datenbank im selben LXC)
   - **moodledata** (separates Storage)
-- Restore-Tests in isolierter Umgebung: Kerncheck ist „DB + moodledata konsistent“ + Login/Grundfunktion ok
+- Restore-Tests in isolierter Umgebung: Kerncheck ist "DB + moodledata konsistent" + Login/Grundfunktion ok
 
 ## Security / Hardening (Prinzip)
-- Segmentierung: Service ist nicht “frei im LAN”
+- Segmentierung: Service ist nicht "frei im LAN"
 - Admin-Zugriff getrennt (MGMT-Konzept)
 - Keine Secrets im Repo; Konfiguration/Passwörter nur lokal/Secret-Store
 
-## Beispiel: Proxmox LXC Parameter (Beispiel)
+## Beispiel: Proxmox LXC Parameter (anonymisiert)
 
 ```ini
 arch: amd64
