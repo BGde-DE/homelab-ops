@@ -26,7 +26,7 @@ Anonymisiertes Operations-Portfolio (homelab-/betriebsnah): Planung, Betrieb und
 
 ## Scope / Kontext
 - Betrieb interner Web-/Collab-/Utility-Services (privat/familiär)
-- Dokumentation ist absichtlich „high level“ und ohne Identifikatoren
+- Dokumentation ist absichtlich "high level" und ohne Identifikatoren
 
 ## Was absichtlich NICHT enthalten ist
 - keine realen IPs/Subnetze, Domains oder Hostnamen
