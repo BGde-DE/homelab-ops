@@ -32,7 +32,7 @@ Ich betreibe Moodle selbst als Service in einer Proxmox-Umgebung.
 
 ```ini
 arch: amd64
-features: nesting=1
+features: nesting=1 #optional (z.B. falls im CT weitere Container/Namespace-Features benötigt werden)
 hostname: moodle
 memory: 8192
 onboot: 1
@@ -41,7 +41,7 @@ swap: 0
 unprivileged: 1
 
 rootfs: local-zfs:subvol-XXX-disk-1,size=XXXG
-startup: order=10,up=90
+startup: order=10,up=90 #Startreihenfolge/Delay (z.B. damit abhängige Storage-Mounts typischerweise vorher bereit sind)
 
 mp0: /path/to/storage/moodledata,mp=/srv/moodledata,size=0T
 
