@@ -2,7 +2,7 @@
 
 ## Ziele
 - Segmentiertes Netzwerk nach Schutzbedarf (Clients/IoT/Gast/Mgmt/Server/Automation/AP-Mgmt)
-- Zentrale “Frontdoor” für Webservices über Reverse Proxy
+- Zentrale "Frontdoor" für Webservices über Reverse Proxy
 - Backup/Restore in mehreren Stufen inkl. Offsite-Kopie
 - Betrieb mit Runbooks, Logging und regelmäßigen Checks
 

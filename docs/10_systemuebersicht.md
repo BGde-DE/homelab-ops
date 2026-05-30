@@ -50,15 +50,15 @@ Gateway/Firewall: OPNsense (Inter-VLAN Routing + Policies)
 - Absicherung: Segmentierung, restriktive Proxy→Backend Regeln, Logging, Patch-Disziplin.
 
 ## 5) IDS/IPS + Threat-Intel Blocklists (Edge Hardening)
-- OPNsense mit aktivem IDS/IPS (regelbasiert, “Oink rules”/ähnliche Feeds).
+- OPNsense mit aktivem IDS/IPS (regelbasiert, "Oink rules"/ähnliche Feeds).
 - Ergänzend: Threat-Intel/Blocklists (Firewall-Aliases), z. B. Kategorien:
   - Botnet/C2 Indicators
   - Abuse-/Scanner-Aggregationen
   - Reputation-Listen (FireHOL o. ä.)
   - dynamische Decisions (z. B. CrowdSec)
 - Betriebsprinzip:
-  - zuerst “Known Bad” blocken, dann gezielte Allowlisting-Policies, danach definierte Public Entry Points
-  - False Positives werden mit enger Allowlist behandelt (nicht “Listen abschalten”)
+  - zuerst "Known Bad" blocken, dann gezielte Allowlisting-Policies, danach definierte Public Entry Points
+  - False Positives werden mit enger Allowlist behandelt (nicht "Listen abschalten")
 
 ## 6) Backup / Restore / DR (mehrstufig, inkl. Offsite)
 Backup-Flow (abstrahiert):

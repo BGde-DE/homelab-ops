@@ -6,5 +6,5 @@
 
 ## Zielbild (Ausbauoptionen)
 - Metriken + Dashboards (z. B. CPU/RAM/Disk/Net)
-- Backup-Job-Status als Alert (“letzter Erfolg < 24h”)
+- Backup-Job-Status als Alert ("letzter Erfolg < 24h")
 - Proxy/IDS Events im Blick (Trend statt nur Einzelfall)

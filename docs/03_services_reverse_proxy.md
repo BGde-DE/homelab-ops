@@ -19,7 +19,7 @@
 - Zusätzlich werden Schutzschichten genutzt:
   - Threat-Intel Blocklists / Reputation-Listen
   - IDS/IPS
-  - Allowlisting (z. B. “trusted only”) dort, wo sinnvoll
+  - Allowlisting (z. B. "trusted only") dort, wo sinnvoll
   - Rate-Limit/Block im Incident-Fall (Runbook)
  
 ## TLS-Termination & interne Verbindung (bewusste Entscheidung)

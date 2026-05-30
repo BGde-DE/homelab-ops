@@ -16,4 +16,4 @@
 4) Betrieb
 - Updates eingeplant
 - Backup/Restore klar
-- Runbook vorhanden (mind. “503 / Login-Probleme / Downtime”)
+- Runbook vorhanden (mind. "503 / Login-Probleme / Downtime")

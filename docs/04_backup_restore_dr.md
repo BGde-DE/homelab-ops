@@ -15,7 +15,7 @@ Kontext: privat/familiär + ehrenamtlicher Betrieb (kein SLA), aber mit dem Ansp
 - Image-/Snapshot-Backups für VMs/LXC (schneller Restore)
 - Zusätzlich app-nahe Daten (z. B. DB-Dumps + Dateien), wo sinnvoll
 
-## Restore-Check: Definition „bestanden“
+## Restore-Check: Definition "bestanden"
 - Service startet im isolierten Testnetz
 - Login/Grundfunktion ok (z. B. UI erreichbar + Auth funktioniert)
 - Daten vorhanden (stichprobenartig)
