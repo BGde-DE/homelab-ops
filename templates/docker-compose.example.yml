@@ -1,1 +1,8 @@
-
+services:
+  example-service:
+    image: nginx:alpine
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    ports:
+      - "127.0.0.1:8080:80" # example only
