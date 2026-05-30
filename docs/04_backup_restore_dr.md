@@ -1,9 +1,10 @@
 # Backup / Restore / DR (High Level)
 
 ## Ziele (RPO/RTO, grob)
-- Ziel: Ausfälle ohne Datenverlust-Katastrophe überstehen
-- **RPO (typisch):** 24h (kritische Daten ggf. kürzer)
-- **RTO (typisch):** 2–4h für Kernservices, 24h für „nice to have“
+Kontext: privat/familiär + ehrenamtlicher Betrieb (kein SLA), aber mit dem Anspruch, dass wichtige Services im Fehlerfall zeitnah wieder verfügbar sind.
+
+- **RPO (typisch):** 24h (tägliche Wiederherstellbarkeit)
+- **RTO (typisch):** gleicher Tag (einige Stunden) für wichtige Services, sonst 24h+
 
 ## Scope (abstrahiert)
 - **Tier 1:** Identity/DNS/Reverse Proxy/Backup-Infrastruktur (Basis)
