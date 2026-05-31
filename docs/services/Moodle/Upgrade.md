@@ -52,6 +52,7 @@ mv moodle moodle.bak
 
 
 wget https://download.moodle.org/download.php/direct/stable310/moodle-latest-310.tgz
+
 tar -xvzf moodle-latest-310.tgz
 rm moodle-latest-310.tgz
 
