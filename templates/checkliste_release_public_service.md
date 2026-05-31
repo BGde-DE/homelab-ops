@@ -1,4 +1,4 @@
-# Checkliste: Dienst öffentlich machen (ohne Details)
+# Checkliste: Dienst öffentlich machen
 
 1) Risiko/Bedarf
 - Muss der Dienst wirklich öffentlich sein?

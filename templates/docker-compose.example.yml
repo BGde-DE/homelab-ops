@@ -5,4 +5,4 @@ services:
     environment:
       - TZ=${TZ}
     ports:
-      - "127.0.0.1:8080:80" # example only
+      - "127.0.0.1:8080:80"
