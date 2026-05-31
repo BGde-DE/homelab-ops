@@ -51,7 +51,7 @@ mv moodle moodle.bak
 ## 4. NEUE MOODLE VERSION
 
 
-wget https://download.moodle.org/download.php/direct/stable310/moodle-latest-310.tgz #Aktuelle Version nehmen
+wget https://download.moodle.org/download.php/direct/stable310/moodle-latest-310.tgz
 tar -xvzf moodle-latest-310.tgz
 rm moodle-latest-310.tgz
 
