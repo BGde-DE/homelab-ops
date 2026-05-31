@@ -3,10 +3,13 @@
 Anonymisiertes Operations-Portfolio (homelab-/betriebsnah): Planung, Betrieb und Troubleshooting von Infrastruktur/Services mit Fokus auf **Security/Segmentierung**, **stabile Deployments**, **Backup/Restore (DR)** und **Runbooks**.
 
 ## Quick links (Start here)
-- **Systemübersicht / Architektur:** `docs/systemuebersicht.md`
+- **Architektur (High Level, Startpunkt):** `docs/architektur_overview.md`
+- **Systemübersicht (Details):** `docs/systemuebersicht.md`
 - **Netzwerk & Security (Segmentierung/Policy):** `docs/netzwerk_security.md`
-- **Firewall-Regeln:** `docs/firewall.md`
+- **Firewall-Regeln (lesbare Policy, kein Export):** `docs/firewall.md`
+- **Reverse Proxy / Public Services:** `docs/services_reverse_proxy.md`
 - **Backup/Restore/DR (Restore-Checks):** `docs/backup_restore_dr.md`
+- **Runbooks:** `docs/runbooks/`
 - **Service-Beispiel (Moodle, Proxmox LXC):** `services/Moodle`
 
 ## Stack (Auszug)
@@ -20,6 +23,7 @@ Anonymisiertes Operations-Portfolio (homelab-/betriebsnah): Planung, Betrieb und
 ## Scope / Kontext
 - Betrieb interner Web-/Collab-/Utility-Services (privat/familiär)
 - Dokumentation ist absichtlich "high level" und ohne Identifikatoren
+- Services im Ordner `services/` sind teils vollständige Beispiele, teils Templates (z. B. `paperless` ist noch im Aufbau)
 
 ## Was absichtlich NICHT enthalten ist
 - keine realen IPs/Subnetze, Domains oder Hostnamen
