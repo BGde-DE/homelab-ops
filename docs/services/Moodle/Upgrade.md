@@ -101,14 +101,15 @@ Optional gezielt durch neue Version ersetzen:
 
 
 - HAProxy zurückschalten:
-  Moodle_WARTUNG_Docker -> disable
-  Moodle_send-proxy -> enable
+
+	- 	Moodle_WARTUNG_Docker -> disable
+	- 	Moodle_send-proxy -> enable
 
 - Test: Läuft alles mit Wartungsmodus?
 
 - Portainer Wartungsstack stoppen
 
-	sudo -u www-data php /var/www/html/admin/cli/maintenance.php --disable
+		sudo -u www-data php /var/www/html/admin/cli/maintenance.php --disable
 
 
 ## 11. CHECKS
