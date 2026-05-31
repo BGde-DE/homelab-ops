@@ -69,7 +69,7 @@ Es existieren bewusst öffentlich erreichbare Dienste. Veröffentlichung erfolgt
 
 #### B) Non-HTTP Dienste (gezielte Ausnahmen)
 - **Allow**: einzelne Service-Kategorien (z. B. Voice / Game / Remote-Support)
-  - typischerweise zusätzlich eingeschränkt über `Geo_Trusted` oder “min trusted”
+  - typischerweise zusätzlich eingeschränkt über `Geo_Trusted` oder "min trusted"
 - **Beispiel (anonym):**
   - "einige UDP-Ports für Gameserver (privat/familiär)"
   - "ein Voice-Service"
