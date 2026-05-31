@@ -31,7 +31,7 @@ während die Wartungsseite über Docker bereitgestellt wird und HAProxy den Traf
 ## 2. APACHE IM LXC STOPPEN
 
 
-/etc/init.d/apache2 stop
+	/etc/init.d/apache2 stop
 
 Hinweis:
 - Traffic ist bereits umgeleitet
@@ -42,64 +42,59 @@ Hinweis:
 ## 3. TEMPORÄRES BACKUP DER INSTALLATION
 
 
-cd /var/www/
-
-rm -rf moodle.bak
-mv moodle moodle.bak
+	cd /var/www/
+	rm -rf moodle.bak
+	mv moodle moodle.bak
 
 
 ## 4. NEUE MOODLE VERSION
 
 
-wget https://download.moodle.org/download.php/direct/stable310/moodle-latest-310.tgz
-
-tar -xvzf moodle-latest-310.tgz
-rm moodle-latest-310.tgz
+	wget https://download.moodle.org/download.php/direct/stable310/moodle-latest-310.tgz
+	tar -xvzf moodle-latest-310.tgz
+	rm moodle-latest-310.tgz
 
 
 ## 5. KONFIGURATION ÜBERNEHMEN
-
-
-cp moodle.bak/public/config.php moodle/
-
-
+	
+	cp moodle.bak/public/config.php moodle/
+	
 ## 6. PLUGINS (MOODLE 5 MIT NEUER PUBLIC STRUCTURE)
 
 
-dirs=("mod" "blocks" "report" "lib" "local")
-
-for dir in "${dirs[@]}"; do
-    cp -pr moodle.bak/public/$dir/* moodle/public/$dir/
-done
+	dirs=("mod" "blocks" "report" "lib" "local")
+	
+	for dir in "${dirs[@]}"; do
+	    cp -pr moodle.bak/public/$dir/* moodle/public/$dir/
+	done
 
 Optional gezielt durch neue Version ersetzen:
 
-rm -rf moodle/public/mod/publication
-
-unzip plugins/local_adminer_moodle51_2026021001.zip \
-  -d moodle/public/local/
+	rm -rf moodle/public/mod/publication
+	
+	unzip plugins/local_adminer_moodle51_2026021001.zip \
+	  -d moodle/public/local/
 
 
 ## 7. RECHTE
 
 
-chown -R root:root moodle
-find moodle -type d -exec chmod 755 {} \;
-find moodle -type f -exec chmod 644 {} \;
-
-chmod 755 moodle/admin/cli/cron.php
+	chown -R root:root moodle
+	find moodle -type d -exec chmod 755 {} \;
+	find moodle -type f -exec chmod 644 {} \;
+	chmod 755 moodle/admin/cli/cron.php
 
 
 ## 8. UPGRADE
 
 
-sudo -u www-data php moodle/admin/cli/upgrade.php
+	sudo -u www-data php moodle/admin/cli/upgrade.php
 
 
 ## 9. APACHE START
 
 
-/etc/init.d/apache2 start
+	/etc/init.d/apache2 start
 
 
 ## 10. WARTUNG BEENDEN
@@ -113,7 +108,7 @@ sudo -u www-data php moodle/admin/cli/upgrade.php
 
 - Portainer Wartungsstack stoppen
 
-sudo -u www-data php /var/www/html/admin/cli/maintenance.php --disable
+	sudo -u www-data php /var/www/html/admin/cli/maintenance.php --disable
 
 
 ## 11. CHECKS
